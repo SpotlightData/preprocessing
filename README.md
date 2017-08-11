@@ -11,9 +11,9 @@ pip install preprocessing
 
 PyPI:
 You can also download the source distribution from:
-~~~~
-[https://pypi.python.org/pypi/preprocessing/](https://pypi.python.org/pypi/preprocessing/)
-~~~~
+
+> [https://pypi.python.org/pypi/preprocessing/](https://pypi.python.org/pypi/preprocessing/)
+
 You can then perform:
 ~~~~
 pip install <path_to_tar_file>
