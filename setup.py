@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 setup(name="preprocessing",
-      version="0.1.1",
+      version="0.1.2",
       classifiers=["Natural Language :: English",
                    "Programming Language :: Python :: 3",
                    "Programming Language :: Python :: 3.6"],
@@ -15,7 +15,7 @@ setup(name="preprocessing",
       license="MIT",
 
       python_requires=">=3",
-      packages=find_packages(exclude=["tests"]),
+      packages=find_packages(exclude=["tests*"]),
       package_data={
           "preprocessing": ["data/*"]
       },

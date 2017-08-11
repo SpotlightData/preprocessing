@@ -11,7 +11,8 @@ def main():
     text_list = ["this text is a test comprised of keywords &amp; stopwords.",
                  "it is comprised of .. punctuation artifacts AND CAPITAL LETTERS",
                  "sometimes it\nhas escape\ncharacters as well. 2017 don't forget",
-                 "I can include urls like https://example.com"]
+                 "I can include urls like https://example.com",
+                 "../?>? .../,,,"]
 
     for text_string in text_list:
         print("raw text:", repr(text_string))

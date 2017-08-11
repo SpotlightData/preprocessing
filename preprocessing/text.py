@@ -61,14 +61,20 @@ def lowercase(text_string):
 def preprocess_text(text_string, function_list):
     '''returns preprocessed text, performing functions in order of appearance in
     list'''
-    for func in function_list:
-        try:
-            text_string = func(text_string)
-        except NameError:
-            raise FunctionError("invalid function passed as element of function_list")
-        except:
-            raise
-    return text_string
+    if isinstance(text_string, str):
+        if isinstance(function_list, list):
+            for func in function_list:
+                try:
+                    text_string = func(text_string)
+                except (NameError, TypeError):
+                    raise FunctionError("invalid function passed as element of function_list")
+                except:
+                    raise
+            return text_string
+        else:
+            raise InputError("list of functions not passed as argument for function_list")
+    else:
+        raise InputError("string not as argument for text_string")
 
 def remove_esc_chars(text_string):
     '''returns text string without escape characters'''
