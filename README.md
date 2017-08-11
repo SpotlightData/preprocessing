@@ -19,3 +19,27 @@ You can then perform:
 pip install <path_to_tar_file>
 ~~~~
 to install this package
+
+# Example
+
+Once you have the package installed, implementing it with Python3 takes the following form:
+
+~~~~
+import preprocessing
+from preprocessing import keyword_tokenize, remove_non_bound_punct, remove_urls
+
+text_string = "important string at: http://example.com"
+
+clean_string = preprocessing.preprocess_text(text_string, [
+    remove_urls,
+    remove_non_bound_punct,
+    keyword_tokenize
+])
+
+print(clean_string)
+~~~~
+> out: "important string"
+
+Should the functions be performed in a different order (i.e. keyword_tokenize - remove_urls - remove_non_bound_punct) :
+
+> out: "important string http example.com"

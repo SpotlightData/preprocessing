@@ -5,6 +5,7 @@ from preprocessing import (convert_html_entities, keyword_tokenize, lowercase,
                            preprocess_text, remove_esc_chars, remove_numbers,
                            remove_non_bound_punct, remove_urls)
 
+
 def main():
     '''demo function for the preprocessing package'''
 
@@ -25,6 +26,7 @@ def main():
             remove_non_bound_punct,
             keyword_tokenize
         ])), "\n")
+
 
 if __name__ == "__main__":
     main()
