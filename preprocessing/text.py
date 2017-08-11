@@ -1,4 +1,4 @@
-'''preprocessing module for strings'''
+'''text preprocessing module for the preprocessing package'''
 
 import html
 from os import environ, path
@@ -10,6 +10,7 @@ nltk.data.path=[path.join(path.dirname(__file__), "data")]
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
+
 PUNCT = string.punctuation
 STOPWORDS = stopwords.words("english")
 TOKENIZER = RegexpTokenizer(r'\b[\w.\/,-]+\b|[-.,\/()]')
@@ -20,11 +21,16 @@ class Error(Exception):
     '''base error handle'''
     pass
 
+class FunctionError(Error):
+    '''error handle for incorrect functions passed as arguments'''
+    pass
+
 class InputError(Error):
     '''error handle for incorrect function arguments'''
     pass
 
 
+#functions
 def convert_html_entities(text_string):
     '''returns string with converted html entities'''
     if text_string is None or text_string == "":
@@ -43,10 +49,26 @@ def keyword_tokenize(text_string):
     else:
         raise InputError("string not passed as argument")
 
-def preprocess_text(function_list):
+def lowercase(text_string):
+    '''returns string in lowercase'''
+    if text_string is None or text_string == "":
+        return ""
+    elif isinstance(text_string, str):
+        return text_string.lower()
+    else:
+        raise InputError("string not passed as argument")
+
+def preprocess_text(text_string, function_list):
     '''returns preprocessed text, performing functions in order of appearance in
     list'''
-    pass
+    for func in function_list:
+        try:
+            text_string = func(text_string)
+        except NameError:
+            raise FunctionError("invalid function passed as element of function_list")
+        except:
+            raise
+    return text_string
 
 def remove_esc_chars(text_string):
     '''returns text string without escape characters'''

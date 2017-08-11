@@ -1,1 +1,29 @@
 #!/usr/bin/env python3.6
+'''demo script for use of the preprocessing package'''
+
+from preprocessing import (convert_html_entities, keyword_tokenize, lowercase,
+                           preprocess_text, remove_esc_chars, remove_numbers,
+                           remove_non_bound_punct, remove_urls)
+
+def main():
+    '''demo function for the preprocessing package'''
+
+    text_list = ["this text is a test comprised of keywords &amp; stopwords.",
+                 "it is comprised of .. punctuation artifacts AND CAPITAL LETTERS",
+                 "sometimes it\nhas escape\ncharacters as well. 2017 don't forget",
+                 "I can include urls like https://example.com"]
+
+    for text_string in text_list:
+        print("raw text:", repr(text_string))
+        print("clean text:", repr(preprocess_text(text_string, [
+            convert_html_entities,
+            lowercase,
+            remove_esc_chars,
+            remove_numbers,
+            remove_urls,
+            remove_non_bound_punct,
+            keyword_tokenize
+        ])), "\n")
+
+if __name__ == "__main__":
+    main()
