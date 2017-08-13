@@ -18,7 +18,11 @@ You can then perform:
 ~~~~
 pip install <path_to_tar_file>
 ~~~~
-to install this package
+on the tar file, or
+~~~~
+python setup.py install
+~~~~
+inside the extracted package to install *preprocessing*
 
 # Example
 
@@ -43,3 +47,20 @@ print(clean_string)
 Should the functions be performed in a different order (i.e. keyword_tokenize - remove_urls - remove_non_bound_punct) :
 
 > out: "important string http example.com"
+
+# Organisation
+
+This package is comprised of a single module with no intended subpackages currently. The 'preprocessing' package is dependent on NLTK for tokenizers and stopwords. However, ignoring this, the package only has built-in dependencies from Python 3.
+
+#Contributing
+
+If you feel like contributing:
+
+* [Check for open issues](https://github.com/mwtmurphy/pre-processing/issues) or open a new issue.
+* Fork the preprocessing repository to start making your changes
+* Write a test which shows the bug was fixed or that the feature works as expected
+* Send a pull request and remember to add yourself to CONTRIBUTORS.txt
+
+# License
+
+This project is licensed under the MIT license (see LICENSE file)

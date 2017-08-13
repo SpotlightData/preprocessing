@@ -1,7 +1,10 @@
 '''unit tests for main preprocessing package'''
 
+from os import path
+import sys
 from unittest import TestCase
 
+sys.path.insert(0, path.abspath(path.join(path.dirname(__file__), "..")))
 import preprocessing
 from preprocessing import (lowercase, remove_esc_chars, remove_non_bound_punct,
                            remove_numbers)
