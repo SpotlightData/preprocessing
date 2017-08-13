@@ -52,7 +52,7 @@ Should the functions be performed in a different order (i.e. keyword_tokenize - 
 
 This package is comprised of a single module with no intended subpackages currently. The 'preprocessing' package is dependent on NLTK for tokenizers and stopwords. However, ignoring this, the package only has built-in dependencies from Python 3.
 
-#Contributing
+# Contributing
 
 If you feel like contributing:
 
