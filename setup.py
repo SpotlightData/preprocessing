@@ -11,7 +11,8 @@ setup(name="preprocessing",
       keywords="text pre-processing",
 
       url="https://github.com/mwtmurphy/pre-processing",
-      author="mwtmurphy",
+      author="Mitchell Murphy",
+      author_email="mwtmurphy@gmail.com",
       license="MIT",
 
       python_requires=">=3",

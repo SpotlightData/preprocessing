@@ -6,7 +6,7 @@ from unittest import TestCase
 
 sys.path.insert(0, path.abspath(path.join(path.dirname(__file__), "..")))
 import preprocessing
-from preprocessing import (lowercase, remove_esc_chars, remove_non_bound_punct,
+from preprocessing import (lowercase, remove_esc_chars, remove_unbound_punct,
                            remove_numbers)
 
 
@@ -90,7 +90,7 @@ class TestPreprocessTextGoodInput(TestCase):
             lowercase,
             remove_esc_chars,
             remove_numbers,
-            remove_non_bound_punct
+            remove_unbound_punct
         ]))
 
 
@@ -130,21 +130,21 @@ class TestRemoveNumbersGoodInput(TestCase):
 
 
 class TestRemoveNonBoundPunctBadInput(TestCase):
-    '''tests for bad input to remove_non_bound_punct'''
+    '''tests for bad input to remove_unbound_punct'''
 
     def test_non_string_input(self):
-        '''remove_non_bound_punct should fail given non-string input'''
-        self.assertRaises(preprocessing.InputError, preprocessing.remove_non_bound_punct, [])
+        '''remove_unbound_punct should fail given non-string input'''
+        self.assertRaises(preprocessing.InputError, preprocessing.remove_unbound_punct, [])
 
 
 class TestRemoveNonBoundPunctGoodInput(TestCase):
-    '''tests for good input to remove_non_bound_punct'''
+    '''tests for good input to remove_unbound_punct'''
 
     def test_expected_outcome(self):
-        '''remove_non_bound_punct should return expected string given correct input'''
-        self.assertEqual(preprocessing.remove_non_bound_punct(""), "")
-        self.assertEqual(preprocessing.remove_non_bound_punct(None), "")
-        self.assertEqual(preprocessing.remove_non_bound_punct("'./'' a . test . string"), "a test string")
+        '''remove_unbound_punct should return expected string given correct input'''
+        self.assertEqual(preprocessing.remove_unbound_punct(""), "")
+        self.assertEqual(preprocessing.remove_unbound_punct(None), "")
+        self.assertEqual(preprocessing.remove_unbound_punct("'./'' a . test . string"), "a test string")
 
 
 class TestRemoveURLsBadInput(TestCase):
