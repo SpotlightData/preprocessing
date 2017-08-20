@@ -20,7 +20,10 @@ setup(name="preprocessing",
       package_data={
           "preprocessing": ["data/*"]
       },
-      install_requires=["nltk"],
+      install_requires=[
+          "nltk",
+          "sphinx_rtd_theme"
+      ],
       test_suite="nose.collector",
       tests_require=["nose"],
       scripts=["bin/demo"],
