@@ -1,8 +1,8 @@
 'preprocessing'
 ===============
 .. image:: https://readthedocs.org/projects/pre-processing/badge/?version=latest
-:target: http://pre-processing.readthedocs.io/en/latest/?badge=latest
-:alt: Documentation Status
+   :target: http://pre-processing.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
 
 Text pre-processing package to aid in NLP package development for Python3. With this package you can order text cleaning functions in the order you prefer rather than relying on the order of an arbitrary NLP package.
 
