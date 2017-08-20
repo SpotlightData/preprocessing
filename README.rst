@@ -20,13 +20,13 @@ PyPI - You can also download the source distribution from:
 
 You can then perform:
 
-.. code-block:: python
+.. code-block:: bash
 
    pip install <path_to_tar_file>
 
 on the tar file, or
 
-.. code-block:: python
+.. code-block:: bash
    
    python setup.py install
 
