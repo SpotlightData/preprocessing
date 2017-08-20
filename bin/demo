@@ -3,7 +3,7 @@
 
 from preprocessing import (convert_html_entities, keyword_tokenize, lowercase,
                            preprocess_text, remove_esc_chars, remove_numbers,
-                           remove_non_bound_punct, remove_urls)
+                           remove_unbound_punct, remove_urls)
 
 
 def main():
@@ -15,6 +15,8 @@ def main():
                  "I can include urls like https://example.com",
                  "../?>? .../,,,"]
 
+    print("using: convert_html_entities, lowercase, remove_esc_chars, remove_numbers, remove_urls, remove_unbound_punct and keyword_tokenize...\n")
+
     for text_string in text_list:
         print("raw text:", repr(text_string))
         print("clean text:", repr(preprocess_text(text_string, [
@@ -23,7 +25,7 @@ def main():
             remove_esc_chars,
             remove_numbers,
             remove_urls,
-            remove_non_bound_punct,
+            remove_unbound_punct,
             keyword_tokenize
         ])), "\n")
 

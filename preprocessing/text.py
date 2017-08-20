@@ -5,7 +5,7 @@ from os import environ, path
 import re
 import string
 
-import nltk
+import nltk.data
 nltk.data.path=[path.join(path.dirname(__file__), "data")]
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer

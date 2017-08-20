@@ -16,7 +16,7 @@ setup(name="preprocessing",
       license="MIT",
 
       python_requires=">=3",
-      packages=find_packages(exclude=["tests*"]),
+      packages=find_packages(),
       package_data={
           "preprocessing": ["data/*"]
       },
