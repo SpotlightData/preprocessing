@@ -11,9 +11,12 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
 
+KEYWORD_TOKENIZER = RegexpTokenizer(r'\b[\w.\/,-]+\b|[-.,\/()]')
+NUMBER_WORDS = [NUMBER_WORD.replace("\n", "") for NUMBER_WORD in open(path.join(path.dirname(__file__), "data/word_numbers.txt"), "r").readlines()]
 PUNCT = string.punctuation
 STOPWORDS = stopwords.words("english")
-TOKENIZER = RegexpTokenizer(r'\b[\w.\/,-]+\b|[-.,\/()]')
+SENTENCE_TOKENIZER = nltk.data.load("tokenizers/punkt/english.pickle")
+TIME_WORDS = [TIME_WORD.replace("\n", "") for TIME_WORD in open(path.join(path.dirname(__file__), "data/word_time.txt"), "r").readlines()]
 
 
 #error handles
@@ -40,12 +43,19 @@ def convert_html_entities(text_string):
     else:
         raise InputError("string not passed as argument")
 
+def create_sentence_list(text_string):
+    '''returns list of sentences from text passed as input'''
+    if isinstance(text_string, str):
+        return SENTENCE_TOKENIZER.tokenize(text_string)
+    else:
+        raise InputError("non-string passed as argument for create_sentence_list")
+
 def keyword_tokenize(text_string):
     '''returns string comprised of only the keywords for the input text'''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
-        return " ".join([word for word in TOKENIZER.tokenize(text_string) if word not in STOPWORDS and len(word) >= 3])
+        return " ".join([word for word in KEYWORD_TOKENIZER.tokenize(text_string) if word not in STOPWORDS and len(word) >= 3])
     else:
         raise InputError("string not passed as argument")
 
@@ -91,6 +101,28 @@ def remove_numbers(text_string):
         return ""
     elif isinstance(text_string, str):
         return " ".join(re.sub(r'\b[\d.\/,]+', "", text_string).split())
+    else:
+        raise InputError("string not passed as argument")
+
+def remove_number_words(text):
+    '''returns text without numbers represented as words'''
+    if text is None or text == "":
+        return ""
+    elif isinstance(text, str):
+        for word in NUMBER_WORDS:
+            text = re.sub(r'[\S]*\b'+word+r'[\S]*', "", text)
+        return " ".join(text.split())
+    else:
+        raise InputError("string not passed as argument")
+
+def remove_time_words(text):
+    '''returns text without time represented as words'''
+    if text is None or text == "":
+        return ""
+    elif isinstance(text, str):
+        for word in TIME_WORDS:
+            text = re.sub(r'[\S]*\b'+word+r'[\S]*', "", text)
+        return " ".join(text.split())
     else:
         raise InputError("string not passed as argument")
 

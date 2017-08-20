@@ -29,6 +29,23 @@ class TestConvertHTMLEntitiesGoodInput(TestCase):
         self.assertEqual(preprocessing.convert_html_entities('&quot;'), '"')
 
 
+class TestCreateSentenceListBadInput(TestCase):
+    '''tests for bad input to create_sentence_list'''
+
+    def test_non_string_input(self):
+        '''create_sentence_list should fail given non-string input'''
+        self.assertRaises(preprocessing.InputError, preprocessing.create_sentence_list, [])
+
+
+class TestCreateSentenceListGoodInput(TestCase):
+    '''tests for good input to create_sentence_list'''
+
+    def test_expected_outcome(self):
+        '''create_sentence_list should provide expected sentence list given known input'''
+        self.assertEqual(preprocessing.create_sentence_list("test sentence. another test sentence. 10.0 test sentences."),
+                         ['test sentence.', 'another test sentence.', '10.0 test sentences.'])
+
+
 class TestKeywordTokenizeBadInput(TestCase):
     '''tests for bad input to keyword_tokenize'''
 
@@ -111,6 +128,7 @@ class TestRemoveEscCharsGoodInput(TestCase):
         self.assertEqual(preprocessing.remove_esc_chars(None), "")
         self.assertEqual(preprocessing.remove_esc_chars("a\ntest\nstring"), "a test string")
 
+
 class TestRemoveNumbersBadInput(TestCase):
     '''tests for bad input to remove_numbers'''
 
@@ -129,7 +147,41 @@ class TestRemoveNumbersGoodInput(TestCase):
         self.assertEqual(preprocessing.remove_numbers("40 tests"), "tests")
 
 
-class TestRemoveNonBoundPunctBadInput(TestCase):
+class TestRemoveNumberWordsBadInput(TestCase):
+    '''tests for bad input to remove_number_words'''
+
+    def test_non_string_input(self):
+        '''remove_number_words should fail given non-string input'''
+        self.assertRaises(preprocessing.InputError, preprocessing.remove_number_words, [])
+
+
+class TestRemoveNumberWordsGoodInput(TestCase):
+    '''tests for good input to remove_number_words'''
+
+    def test_expected_outcome(self):
+        '''remove_number_words should return expected string given known input'''
+        self.assertEqual(preprocessing.remove_number_words("one year i did two hour tests"),
+                         "year i did hour tests")
+
+
+class TestRemoveTimeWordsBadInput(TestCase):
+    '''tests for bad input to remove_time_words'''
+
+    def test_non_string_input(self):
+        '''remove_time_words should fail given non-string input'''
+        self.assertRaises(preprocessing.InputError, preprocessing.remove_time_words, [])
+
+
+class TestRemoveTimeWordsGoodInput(TestCase):
+    '''tests for good input to remove_time_words'''
+
+    def test_expected_outcome(self):
+        '''remove_time_words should return expected string given known input'''
+        self.assertEqual(preprocessing.remove_time_words("one year i did two hour tests"),
+                         "one i did two tests")
+
+
+class TestRemoveUnboundPunctBadInput(TestCase):
     '''tests for bad input to remove_unbound_punct'''
 
     def test_non_string_input(self):
@@ -137,7 +189,7 @@ class TestRemoveNonBoundPunctBadInput(TestCase):
         self.assertRaises(preprocessing.InputError, preprocessing.remove_unbound_punct, [])
 
 
-class TestRemoveNonBoundPunctGoodInput(TestCase):
+class TestRemoveUnboundPunctGoodInput(TestCase):
     '''tests for good input to remove_unbound_punct'''
 
     def test_expected_outcome(self):
