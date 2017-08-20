@@ -104,25 +104,25 @@ def remove_numbers(text_string):
     else:
         raise InputError("string not passed as argument")
 
-def remove_number_words(text):
+def remove_number_words(text_string):
     '''returns text without numbers represented as words'''
-    if text is None or text == "":
+    if text_string is None or text_string == "":
         return ""
-    elif isinstance(text, str):
+    elif isinstance(text_string, str):
         for word in NUMBER_WORDS:
-            text = re.sub(r'[\S]*\b'+word+r'[\S]*', "", text)
-        return " ".join(text.split())
+            text_string = re.sub(r'[\S]*\b'+word+r'[\S]*', "", text_string)
+        return " ".join(text_string.split())
     else:
         raise InputError("string not passed as argument")
 
-def remove_time_words(text):
+def remove_time_words(text_string):
     '''returns text without time represented as words'''
-    if text is None or text == "":
+    if text_string is None or text_string == "":
         return ""
-    elif isinstance(text, str):
+    elif isinstance(text_string, str):
         for word in TIME_WORDS:
-            text = re.sub(r'[\S]*\b'+word+r'[\S]*', "", text)
-        return " ".join(text.split())
+            text_string = re.sub(r'[\S]*\b'+word+r'[\S]*', "", text_string)
+        return " ".join(text_string.split())
     else:
         raise InputError("string not passed as argument")
 

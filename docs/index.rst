@@ -4,8 +4,7 @@
 .. toctree::
    :maxdepth: 2
 
-   preprocessing.rst
-   modules.rst
+Basic text around preprocessing package
 
 
 Indices and tables

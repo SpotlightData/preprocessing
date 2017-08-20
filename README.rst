@@ -35,7 +35,7 @@ on the tar file, or
    
    python setup.py install
 
-inside the extracted package to install *preprocessing*
+inside the extracted package to install *preprocessing*.
 
 Example
 -------
