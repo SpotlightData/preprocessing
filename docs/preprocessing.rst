@@ -1,13 +1,6 @@
 preprocessing package
 =====================
 
-Subpackages
------------
-
-.. toctree::
-
-    preprocessing.tests
-
 Submodules
 ----------
 
