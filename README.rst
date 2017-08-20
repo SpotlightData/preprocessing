@@ -9,7 +9,7 @@ Installation
 
 pip:
 
-.. code-block:: python
+.. code-block:: console
 
    pip install preprocessing
 
@@ -20,13 +20,13 @@ PyPI - You can also download the source distribution from:
 
 You can then perform:
 
-.. code-block:: bash
+.. code-block:: console
 
    pip install <path_to_tar_file>
 
 on the tar file, or
 
-.. code-block:: bash
+.. code-block:: console
    
    python setup.py install
 
