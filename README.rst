@@ -72,7 +72,7 @@ This package is comprised of a single module with no intended subpackages curren
 Contributing
 ------------
 
-If you feel like contributing, heres a `link to the repository <https://github.com/mwtmurphy/pre-processing>`_
+If you feel like contributing:
 
 * `Check for open issues <https://github.com/mwtmurphy/pre-processing/issues>`_ or open a new issue
 * Fork the preprocessing repository to start making your changes
