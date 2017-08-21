@@ -6,8 +6,8 @@ from unittest import TestCase
 
 sys.path.insert(0, path.abspath(path.join(path.dirname(__file__), "..")))
 import preprocessing.text as ptext
-from preprocessing import (lowercase, remove_esc_chars, remove_unbound_punct,
-                           remove_numbers)
+from preprocessing.text import (lowercase, remove_esc_chars, remove_unbound_punct,
+                                remove_numbers)
 
 
 class TestConvertHTMLEntitiesBadInput(TestCase):
@@ -42,7 +42,8 @@ class TestCreateSentenceListGoodInput(TestCase):
 
     def test_expected_outcome(self):
         '''create_sentence_list should provide expected sentence list given known input'''
-        self.assertEqual(ptext.create_sentence_list("test sentence. another test sentence. 10.0 test sentences."),
+        self.assertEqual(ptext.create_sentence_list("test sentence. another test sentence. 10.0 "
+                                                    "test sentences."),
                          ['test sentence.', 'another test sentence.', '10.0 test sentences.'])
 
 

@@ -35,7 +35,7 @@ on the tar file, or
    
    python setup.py install
 
-inside the extracted package to install *preprocessing*.
+on/inside, respectively, the extracted package to install *preprocessing*.
 
 Example
 -------
@@ -44,13 +44,13 @@ Once you have the package installed, implementing it with Python3 takes the foll
 
 .. code-block:: python
 
-   import preprocessing
-   from preprocessing import keyword_tokenize, 
+   import preprocessing.text as ptext
+   from preprocessing.text import keyword_tokenize, 
    remove_non_bound_punct, remove_urls
 
    text_string = "important string at: http://example.com"
 
-   clean_string = preprocessing.preprocess_text(text_string, [
+   clean_string = ptext.preprocess_text(text_string, [
        remove_urls,
        remove_non_bound_punct,
        keyword_tokenize
@@ -72,14 +72,14 @@ This package is comprised of a single module with no intended subpackages curren
 Contributing
 ------------
 
-If you feel like contributing:
+If you feel like contributing, heres a `link to the repository <https://github.com/mwtmurphy/pre-processing>`_
 
 * `Check for open issues <https://github.com/mwtmurphy/pre-processing/issues>`_ or open a new issue
 * Fork the preprocessing repository to start making your changes
 * Write a test which shows the bug was fixed or that the feature works as expected
-* Send a pull request and remember to add yourself to CONTRIBUTORS.txt
+* Send a pull request and remember to add yourself to `CONTRIBUTORS.md <https://github.com/mwtmurphy/pre-processing/blob/master/CONTRIBUTORS.md>`_
 
 License
 -------
 
-This project is licensed under the MIT license (see LICENSE file)
+This project is licensed under the MIT license (see `LICENSE.txt <https://github.com/mwtmurphy/pre-processing/blob/master/LICENSE.txt>`_)

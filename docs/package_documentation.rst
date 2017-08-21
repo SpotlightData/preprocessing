@@ -1,8 +1,8 @@
 Package Documentation
 =====================
 
-Preprocessing Function
-----------------------
+Text Preprocessing
+------------------
 
-Sub-functions
--------------
+.. automodule:: preprocessing.text
+   :members:

@@ -8,6 +8,7 @@ setup(name="preprocessing",
                    "Programming Language :: Python :: 3",
                    "Programming Language :: Python :: 3.6"],
       description="pre-processing package for text strings",
+      long_description=open("README.rst").read(),
       keywords="text pre-processing",
 
       url="https://github.com/mwtmurphy/pre-processing",
@@ -20,10 +21,13 @@ setup(name="preprocessing",
       package_data={
           "preprocessing": ["data/*"]
       },
+      include_package_data=True,
+
       install_requires=[
           "nltk",
           "sphinx_rtd_theme"
       ],
+
       test_suite="nose.collector",
       tests_require=["nose"],
       scripts=["bin/demo"],
