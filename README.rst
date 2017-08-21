@@ -45,8 +45,7 @@ Once you have the package installed, implementing it with Python3 takes the foll
 .. code-block:: python
 
    import preprocessing.text as ptext
-   from preprocessing.text import keyword_tokenize, 
-   remove_non_bound_punct, remove_urls
+   from preprocessing.text import keyword_tokenize, remove_unbound_punct, remove_urls
 
    text_string = "important string at: http://example.com"
 
