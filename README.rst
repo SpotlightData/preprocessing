@@ -51,7 +51,7 @@ Once you have the package installed, implementing it with Python3 takes the foll
 
    clean_string = ptext.preprocess_text(text_string, [
        remove_urls,
-       remove_non_bound_punct,
+       remove_unbound_punct,
        keyword_tokenize
    ])
 
