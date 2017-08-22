@@ -1,4 +1,29 @@
-'''text preprocessing module for the preprocessing package'''
+'''
+Text pre-processing module with functions:
+
+* convert_html_entities
+    * returns string with converted character references to unicode characters
+* create_sentence_list
+    * returns list of sentences
+* keyword_tokenize
+    * returns string with only non-stopword terms of a word length greater than 3
+* lowercase
+    * returns string in lowercase format
+* preprocess_text
+    * returns string with an order of preprocessing functions applied to it
+* remove_esc_chars
+    * returns string stripped of escape characters
+* remove_numbers
+    * returns string stripped of numbers represented as integer or float values
+* remove_number_words
+    * returns string stripped of numbers represented as words (one, two, three, etc.)
+* remove_time_words
+    * returns string stripped of words associated to time (day, week, month, etc.)
+* remove_unbound_punct
+    * returns string stripped of punctuation unattached to a non-whitespace character
+* remove_urls
+    * returns string stripped of URLs
+'''
 
 import html
 from os import environ, path
@@ -10,6 +35,8 @@ nltk.data.path=[path.join(path.dirname(__file__), "data")]
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
+from .errors import Error, FunctionError, InputError
+
 
 KEYWORD_TOKENIZER = RegexpTokenizer(r'\b[\w.\/,-]+\b|[-.,\/()]')
 NUMBER_WORDS = [NUMBER_WORD.replace("\n", "") for NUMBER_WORD in open(path.join(path.dirname(__file__), "data/word_numbers.txt"), "r").readlines()]
@@ -19,23 +46,18 @@ SENTENCE_TOKENIZER = nltk.data.load("tokenizers/punkt/english.pickle")
 TIME_WORDS = [TIME_WORD.replace("\n", "") for TIME_WORD in open(path.join(path.dirname(__file__), "data/word_time.txt"), "r").readlines()]
 
 
-#error handles
-class Error(Exception):
-    '''base error handle'''
-    pass
-
-class FunctionError(Error):
-    '''error handle for incorrect functions passed as arguments'''
-    pass
-
-class InputError(Error):
-    '''error handle for incorrect function arguments'''
-    pass
-
-
 #functions
 def convert_html_entities(text_string):
-    '''returns string with converted html entities'''
+    '''
+    Converts HTML5 character references within text_string to their corresponding unicode characters
+    and returns converted string as type str.
+
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
@@ -44,14 +66,32 @@ def convert_html_entities(text_string):
         raise InputError("string not passed as argument")
 
 def create_sentence_list(text_string):
-    '''returns list of sentences from text passed as input'''
+    '''
+    Splits text_string into a list of sentences based on NLTK's english.pickle tokenizer, and
+    returns said list as type list of str.
+
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if isinstance(text_string, str):
         return SENTENCE_TOKENIZER.tokenize(text_string)
     else:
         raise InputError("non-string passed as argument for create_sentence_list")
 
 def keyword_tokenize(text_string):
-    '''returns string comprised of only the keywords for the input text'''
+    '''
+    Extracts keywords from text_string using NLTK's list of English stopwords, ignoring words of a
+    length smaller than 3, and returns the new string as type str.
+
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
@@ -60,7 +100,15 @@ def keyword_tokenize(text_string):
         raise InputError("string not passed as argument")
 
 def lowercase(text_string):
-    '''returns string in lowercase'''
+    '''
+    Converts text_string into lowercase and returns the converted string as type str.
+
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
@@ -69,8 +117,18 @@ def lowercase(text_string):
         raise InputError("string not passed as argument")
 
 def preprocess_text(text_string, function_list):
-    '''returns preprocessed text, performing functions in order of appearance in
-    list'''
+    '''
+    Given each function within function_list, applies the order of functions put forward onto
+    text_string, returning the processed string as type str.
+
+    Keyword argument:
+    * function_list - list of functions available in preprocessing.text
+    * text_string - string instance
+
+    Exceptions raised:
+    * FunctionError - occurs should an invalid function be passed within the list of functions
+    * InputError - occurs should text_string be non-string, or function_list be non-list
+    '''
     if isinstance(text_string, str):
         if isinstance(function_list, list):
             for func in function_list:
@@ -87,7 +145,15 @@ def preprocess_text(text_string, function_list):
         raise InputError("string not as argument for text_string")
 
 def remove_esc_chars(text_string):
-    '''returns text string without escape characters'''
+    '''
+    Removes any escape character within text_string and returns the new string as type str.
+    
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
@@ -96,7 +162,15 @@ def remove_esc_chars(text_string):
         raise InputError("string not passed as argument")
 
 def remove_numbers(text_string):
-    '''returns text without numbers'''
+    '''
+    Removes any digit value discovered within text_string and returns the new string as type str.
+
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
@@ -105,7 +179,16 @@ def remove_numbers(text_string):
         raise InputError("string not passed as argument")
 
 def remove_number_words(text_string):
-    '''returns text without numbers represented as words'''
+    '''
+    Removes any integer represented as a word within text_string and returns the new string as 
+    type str.
+
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
@@ -116,7 +199,16 @@ def remove_number_words(text_string):
         raise InputError("string not passed as argument")
 
 def remove_time_words(text_string):
-    '''returns text without time represented as words'''
+    '''
+    Removes any word associated to time (day, week, month, etc.) within text_string and returns the
+    new string as type str.
+
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
@@ -127,7 +219,16 @@ def remove_time_words(text_string):
         raise InputError("string not passed as argument")
 
 def remove_unbound_punct(text_string):
-    '''returns string without non word boundary punctuation'''
+    '''
+    Removes all punctuation unattached from a non-whitespace or attached to another punctuation
+    character unexpectedly (e.g. ".;';") within text_string and returns the new string as type str.
+    
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
@@ -136,7 +237,15 @@ def remove_unbound_punct(text_string):
         raise InputError("string not passed as argument")
 
 def remove_urls(text_string):
-    '''returns text string without urls'''
+    '''
+    Removes all URLs within text_string and returns the new string as type str.
+
+    Keyword argument:
+    * text_string - string instance
+
+    Exceptions raised:
+    * InputError - occurs should a non-string argument be passed
+    '''
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):

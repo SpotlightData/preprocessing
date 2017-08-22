@@ -1,5 +1,8 @@
 #!/usr/bin/env python3.6
-'''demo script for use of the preprocessing package'''
+'''
+Demo console script exemplifying use of the preprocessing package
+'''
+
 
 from preprocessing.text import (convert_html_entities, keyword_tokenize, lowercase,
                                 preprocess_text, remove_esc_chars, remove_numbers,
@@ -7,7 +10,9 @@ from preprocessing.text import (convert_html_entities, keyword_tokenize, lowerca
 
 
 def main():
-    '''demo function for the preprocessing package'''
+    '''
+    Demo function applying the preprocessing package
+    '''
 
     text_list = ["this text is a test comprised of keywords &amp; stopwords.",
                  "it is comprised of .. punctuation artifacts AND CAPITAL LETTERS",
@@ -15,7 +20,7 @@ def main():
                  "I can include urls like https://example.com",
                  "../?>? .../,,,"]
 
-    print("using: convert_html_entities, lowercase, remove_esc_chars, remove_numbers, "
+    print("using, in order: convert_html_entities, lowercase, remove_esc_chars, remove_numbers, "
           "remove_urls, remove_unbound_punct and keyword_tokenize...\n")
 
     for text_string in text_list:
