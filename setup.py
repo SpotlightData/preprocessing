@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 setup(name="preprocessing",
-      version="0.1.2",
+      version="0.1.3",
       classifiers=["Natural Language :: English",
                    "Programming Language :: Python :: 3",
                    "Programming Language :: Python :: 3.6"],
@@ -19,13 +19,18 @@ setup(name="preprocessing",
       python_requires=">=3",
       packages=find_packages(),
       package_data={
-          "preprocessing": ["data/*"]
+          "preprocessing": [
+              "data/tokenizers/punkt/PY3/english.pickle",
+              "data/tokenizers/punkt/english.pickle",
+              "data/corpora/stopwords/english",
+              "data/word_numbers.txt",
+              "data/word_time.txt"
+          ]
       },
       include_package_data=True,
 
       install_requires=[
-          "nltk",
-          "sphinx_rtd_theme"
+          "nltk"
       ],
 
       test_suite="nose.collector",
