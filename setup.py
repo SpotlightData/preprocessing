@@ -30,7 +30,8 @@ setup(name="preprocessing",
       include_package_data=True,
 
       install_requires=[
-          "nltk"
+          "nltk",
+          "sphinx_rtd_theme"
       ],
 
       test_suite="nose.collector",
