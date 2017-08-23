@@ -5,4 +5,4 @@ Text Preprocessing
 ------------------
 
 .. automodule:: preprocessing.text
-   :members:
+    :members:
