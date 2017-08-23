@@ -2,6 +2,14 @@
 
 from setuptools import find_packages, setup
 
+def get_requirements():
+    '''returns requirements array for package'''
+    packages = []
+    with open("requirements.txt", "r") as req_doc:
+        for package in req_doc:
+            packages.append(package.replace("\n", ""))
+    return packages
+
 setup(name="preprocessing",
       version="0.1.3",
       classifiers=["Natural Language :: English",
@@ -29,10 +37,7 @@ setup(name="preprocessing",
       },
       include_package_data=True,
 
-      install_requires=[
-          "nltk",
-          "sphinx_rtd_theme"
-      ],
+      install_requires=get_requirements(),
 
       test_suite="nose.collector",
       tests_require=["nose"],

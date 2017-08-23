@@ -1,3 +1,4 @@
 include CONTRIBUTORS.md
 include LICENSE.txt
 include README.rst
+include requirements.txt
