@@ -3,14 +3,7 @@
 '''config file for sphinx doc build via readthedocs'''
 
 
-from os import getcwd, path
-import sys
-
-
 import sphinx_rtd_theme
-
-
-sys.path.insert(0, path.join(getcwd(), "../preprocessing"))
 
 
 #General configuration
