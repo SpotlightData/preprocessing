@@ -135,6 +135,7 @@ def preprocess_text(text_string, function_list):
     - text_string: string instance
 
     Exceptions raised:
+    
     - FunctionError: occurs should an invalid function be passed within the list of functions
     - InputError: occurs should text_string be non-string, or function_list be non-list
     '''
@@ -264,7 +265,7 @@ def remove_urls(text_string):
     - text_string: string instance
 
     Exceptions raised:
-    
+
     - InputError: occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
