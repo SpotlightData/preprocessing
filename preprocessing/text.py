@@ -256,7 +256,7 @@ def remove_unbound_punct(text_string):
     if text_string is None or text_string == "":
         return ""
     elif isinstance(text_string, str):
-        return " ".join(re.sub(r'\B['+PUNCT+r']', "", text_string).split())
+        return " ".join(re.sub(r''.join([r'[', PUNCT, r'][', PUNCT, r']+']), "", text_string).split())
     else:
         raise InputError("string not passed as argument")
 
