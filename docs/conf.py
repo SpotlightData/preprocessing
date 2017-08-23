@@ -10,7 +10,7 @@ import sys
 import sphinx_rtd_theme
 
 
-sys.path.insert(0, path.join(getcwd(), "../preprocessing"))
+sys.path.insert(0, path.join(getcwd(), "../"))
 
 
 #General configuration
