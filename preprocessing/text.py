@@ -65,7 +65,7 @@ def convert_html_entities(text_string):
     elif isinstance(text_string, str):
         return html.unescape(text_string).replace("&quot;", "'")
     else:
-        raise InputError("string not passed as argument")
+        raise InputError("string not passed as argument for text_string")
 
 def create_sentence_list(text_string):
     '''
@@ -80,7 +80,9 @@ def create_sentence_list(text_string):
 
     - InputError: occurs should a non-string argument be passed
     '''
-    if isinstance(text_string, str):
+    if text_string is None or text_string == "":
+        return []
+    elif isinstance(text_string, str):
         return SENTENCE_TOKENIZER.tokenize(text_string)
     else:
         raise InputError("non-string passed as argument for create_sentence_list")
@@ -103,7 +105,7 @@ def keyword_tokenize(text_string):
     elif isinstance(text_string, str):
         return " ".join([word for word in KEYWORD_TOKENIZER.tokenize(text_string) if word not in STOPWORDS and len(word) >= 3])
     else:
-        raise InputError("string not passed as argument")
+        raise InputError("string not passed as argument for text_string")
 
 def lowercase(text_string):
     '''
@@ -122,7 +124,7 @@ def lowercase(text_string):
     elif isinstance(text_string, str):
         return text_string.lower()
     else:
-        raise InputError("string not passed as argument")
+        raise InputError("string not passed as argument for text_string")
 
 def preprocess_text(text_string, function_list):
     '''
@@ -139,7 +141,9 @@ def preprocess_text(text_string, function_list):
     - FunctionError: occurs should an invalid function be passed within the list of functions
     - InputError: occurs should text_string be non-string, or function_list be non-list
     '''
-    if isinstance(text_string, str):
+    if text_string is None or text_string == "":
+        return ""
+    elif isinstance(text_string, str):
         if isinstance(function_list, list):
             for func in function_list:
                 try:
@@ -152,7 +156,7 @@ def preprocess_text(text_string, function_list):
         else:
             raise InputError("list of functions not passed as argument for function_list")
     else:
-        raise InputError("string not as argument for text_string")
+        raise InputError("string not passed as argument for text_string")
 
 def remove_esc_chars(text_string):
     '''
