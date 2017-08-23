@@ -1,28 +1,28 @@
 '''
 Text pre-processing module with functions:
 
-* convert_html_entities
-    * returns string with converted character references to unicode characters
-* create_sentence_list
-    * returns list of sentences
-* keyword_tokenize
-    * returns string with only non-stopword terms of a word length greater than 3
-* lowercase
-    * returns string in lowercase format
-* preprocess_text
-    * returns string with an order of preprocessing functions applied to it
-* remove_esc_chars
-    * returns string stripped of escape characters
-* remove_numbers
-    * returns string stripped of numbers represented as integer or float values
-* remove_number_words
-    * returns string stripped of numbers represented as words (one, two, three, etc.)
-* remove_time_words
-    * returns string stripped of words associated to time (day, week, month, etc.)
-* remove_unbound_punct
-    * returns string stripped of punctuation unattached to a non-whitespace character
-* remove_urls
-    * returns string stripped of URLs
+- convert_html_entities
+    - returns string with converted character references to unicode characters
+- create_sentence_list
+    - returns list of sentences
+- keyword_tokenize
+    - returns string with only non-stopword terms of a word length greater than 3
+- lowercase
+    - returns string in lowercase format
+- preprocess_text
+    - returns string with an order of preprocessing functions applied to it
+- remove_esc_chars
+    - returns string stripped of escape characters
+- remove_numbers
+    - returns string stripped of numbers represented as integer or float values
+- remove_number_words
+    - returns string stripped of numbers represented as words (one, two, three, etc.)
+- remove_time_words
+    - returns string stripped of words associated to time (day, week, month, etc.)
+- remove_unbound_punct
+    - returns string stripped of punctuation unattached to a non-whitespace character
+- remove_urls
+    - returns string stripped of URLs
 '''
 
 import html
@@ -53,10 +53,10 @@ def convert_html_entities(text_string):
     and returns converted string as type str.
 
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""
@@ -71,10 +71,10 @@ def create_sentence_list(text_string):
     returns said list as type list of str.
 
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if isinstance(text_string, str):
         return SENTENCE_TOKENIZER.tokenize(text_string)
@@ -87,10 +87,10 @@ def keyword_tokenize(text_string):
     length smaller than 3, and returns the new string as type str.
 
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""
@@ -104,10 +104,10 @@ def lowercase(text_string):
     Converts text_string into lowercase and returns the converted string as type str.
 
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""
@@ -122,12 +122,12 @@ def preprocess_text(text_string, function_list):
     text_string, returning the processed string as type str.
 
     Keyword argument:
-    * function_list - list of functions available in preprocessing.text
-    * text_string - string instance
+    - function_list - list of functions available in preprocessing.text
+    - text_string - string instance
 
     Exceptions raised:
-    * FunctionError - occurs should an invalid function be passed within the list of functions
-    * InputError - occurs should text_string be non-string, or function_list be non-list
+    - FunctionError - occurs should an invalid function be passed within the list of functions
+    - InputError - occurs should text_string be non-string, or function_list be non-list
     '''
     if isinstance(text_string, str):
         if isinstance(function_list, list):
@@ -149,10 +149,10 @@ def remove_esc_chars(text_string):
     Removes any escape character within text_string and returns the new string as type str.
     
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""
@@ -166,10 +166,10 @@ def remove_numbers(text_string):
     Removes any digit value discovered within text_string and returns the new string as type str.
 
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""
@@ -180,14 +180,14 @@ def remove_numbers(text_string):
 
 def remove_number_words(text_string):
     '''
-    Removes any integer represented as a word within text_string and returns the new string as 
+    Removes any integer represented as a word within text_string and returns the new string as
     type str.
 
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""
@@ -204,10 +204,10 @@ def remove_time_words(text_string):
     new string as type str.
 
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""
@@ -224,10 +224,10 @@ def remove_unbound_punct(text_string):
     character unexpectedly (e.g. ".;';") within text_string and returns the new string as type str.
     
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""
@@ -241,10 +241,10 @@ def remove_urls(text_string):
     Removes all URLs within text_string and returns the new string as type str.
 
     Keyword argument:
-    * text_string - string instance
+    - text_string - string instance
 
     Exceptions raised:
-    * InputError - occurs should a non-string argument be passed
+    - InputError - occurs should a non-string argument be passed
     '''
     if text_string is None or text_string == "":
         return ""

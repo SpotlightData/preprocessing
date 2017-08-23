@@ -1,12 +1,12 @@
 '''
 Error handling module with classes:
 
-* Error
-    * base errpr handle
-* FunctionError
-    * error handle for incorrect functions passed as arguments
-* InputError
-    * error handle for incorrect function arguments
+- Error
+    - base errpr handle
+- FunctionError
+    - error handle for incorrect functions passed as arguments
+- InputError
+    - error handle for incorrect function arguments
 '''
 
 class Error(Exception):
