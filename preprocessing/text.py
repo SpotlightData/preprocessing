@@ -3,6 +3,10 @@ Text pre-processing module with functions:
 
 - convert_html_entities
     - returns string with converted character references to unicode characters
+- convert_ligatures
+    - returns string with converted ligature character references to unicode characters
+- correct_spelling
+    - returns spelling corrected string 
 - create_sentence_list
     - returns list of sentences
 - keyword_tokenize
@@ -23,9 +27,12 @@ Text pre-processing module with functions:
     - returns string stripped of punctuation unattached to a non-whitespace character
 - remove_urls
     - returns string stripped of URLs
+- remove_whitespace
+    - returns string stripped of whitespace
 '''
 
 import html
+import json
 from os import environ, path
 import re
 import string
@@ -36,9 +43,11 @@ from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
 from .errors import Error, FunctionError, InputError
+import .spellcheck
 
 
 KEYWORD_TOKENIZER = RegexpTokenizer(r'\b[\w.\/,-]+\b|[-.,\/()]')
+LIGATURES = json.load(open(path.join(path.dirname*(__file__), '/data/latin_characters.json'), "r"))
 NUMBER_WORDS = [NUMBER_WORD.replace("\n", "") for NUMBER_WORD in open(path.join(path.dirname(__file__), "data/word_numbers.txt"), "r").readlines()]
 PUNCT = string.punctuation
 STOPWORDS = stopwords.words("english")
@@ -66,6 +75,56 @@ def convert_html_entities(text_string):
         return html.unescape(text_string).replace("&quot;", "'")
     else:
         raise InputError("string not passed as argument for text_string")
+
+def convert_ligatures(text_string):
+    '''
+    Coverts Latin character references within text_string to their corresponding unicode characters
+    and returns converted string as type str.
+
+    Keyword argument:
+    
+    - text_string: string instance
+
+    Exceptions raised:
+
+    - InputError: occurs should a string or NoneType not be passed as an argument
+    '''
+    if text_string is None or text_string == "":
+        return ""
+    elif isinstance(text_string, str):
+        for i in range(0, len(LIGATURES)):
+            text_string = text_string.replace(LIGATURES[str(i)]["ligature"], LIGATURES[str(i)]["term"])
+        return text_string
+    else:
+        raise InputError("none type or string not passed as an argument")
+
+def correct_spelling(text_string):
+    '''
+    Splits string and converts words not found within a pre-built dictionary to their
+    most likely actual word based on a relative probability dictionary. Returns edited
+    string as type str.
+
+    Keyword argument:
+
+    - text_string: string instance
+
+    Exceptions raised:
+
+    - InputError: occurs should a string or NoneType not be passed as an argument
+    '''
+    if text_string is None or text_string == "":
+        return ""
+    elif isinstance(text_string, str):
+        word_list = text_string.split()
+        spellchecked_word_list = []*len(word_list)
+        for word_num, word in enumerate(word_list):
+            spellchecked_word_list[word_num] = spellcheck.correct_word(word)
+        return " ".join(spellchecked_word_list)
+    else:
+        raise InputError("none type or string not passed as an argument")
+
+
+
 
 def create_sentence_list(text_string):
     '''
@@ -279,3 +338,22 @@ def remove_urls(text_string):
         return " ".join(re.sub(r'http\S+', "", text_string).split())
     else:
         raise InputError("string not passed as argument")
+
+def remove_whitespace(text_string):
+    '''
+    Removes all whitespace found within text_string and returns new string as type str.
+
+    Keyword argument:
+
+    - text_string: string instance
+
+    Exceptions raised:
+
+    -InputErrorL occurs should a string or NoneType not be passed as an argument
+    '''
+    if text_string is None or text_string == "":
+        return ""
+    elif isinstance(text_string, str):
+        return " ".join(text_string.split())
+    else:
+        raise InputError("none type or string not passed as an argument")

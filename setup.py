@@ -11,7 +11,7 @@ def get_requirements():
     return packages
 
 setup(name="preprocessing",
-      version="0.1.7",
+      version="0.1.8",
       classifiers=["Natural Language :: English",
                    "Programming Language :: Python :: 3",
                    "Programming Language :: Python :: 3.6"],
@@ -28,6 +28,8 @@ setup(name="preprocessing",
       packages=find_packages(),
       package_data={
           "preprocessing": [
+              "data/bnc_wiktionary_corpus.txt",
+              "data/latin_characters.json",
               "data/tokenizers/punkt/PY3/english.pickle",
               "data/tokenizers/punkt/english.pickle",
               "data/corpora/stopwords/english",
