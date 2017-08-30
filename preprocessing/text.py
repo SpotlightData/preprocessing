@@ -48,7 +48,7 @@ from nltk.tokenize import RegexpTokenizer
 
 
 KEYWORD_TOKENIZER = RegexpTokenizer(r'\b[\w.\/,-]+\b|[-.,\/()]')
-LIGATURES = json.loads(open(path.join(path.dirname*(__file__), '/data/latin_characters.json'), "r").read())
+LIGATURES = json.load(open(path.join(path.dirname(__file__), "data/latin_characters.json"), "r"))
 NUMBER_WORDS = [NUMBER_WORD.replace("\n", "") for NUMBER_WORD in open(path.join(path.dirname(__file__), "data/word_numbers.txt"), "r").readlines()]
 PUNCT = string.punctuation
 STOPWORDS = stopwords.words("english")
