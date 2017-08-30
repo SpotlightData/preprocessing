@@ -11,7 +11,7 @@ def get_requirements():
     return packages
 
 setup(name="preprocessing",
-      version="0.1.8",
+      version="0.1.10",
       classifiers=["Natural Language :: English",
                    "Programming Language :: Python :: 3",
                    "Programming Language :: Python :: 3.6"],

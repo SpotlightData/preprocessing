@@ -31,23 +31,24 @@ Text pre-processing module with functions:
     - returns string stripped of whitespace
 '''
 
+
+from preprocessing.errors import Error, FunctionError, InputError
+import preprocessing.spellcheck as spellcheck
+
 import html
 import json
-from os import environ, path
+from os import path
 import re
 import string
 
 import nltk.data
-nltk.data.path=[path.join(path.dirname(__file__), "data")]
+nltk.data.path = [path.join(path.dirname(__file__), "data")]
 from nltk.corpus import stopwords
 from nltk.tokenize import RegexpTokenizer
 
-from .errors import Error, FunctionError, InputError
-import .spellcheck
-
 
 KEYWORD_TOKENIZER = RegexpTokenizer(r'\b[\w.\/,-]+\b|[-.,\/()]')
-LIGATURES = json.load(open(path.join(path.dirname*(__file__), '/data/latin_characters.json'), "r"))
+LIGATURES = json.loads(open(path.join(path.dirname*(__file__), '/data/latin_characters.json'), "r").read())
 NUMBER_WORDS = [NUMBER_WORD.replace("\n", "") for NUMBER_WORD in open(path.join(path.dirname(__file__), "data/word_numbers.txt"), "r").readlines()]
 PUNCT = string.punctuation
 STOPWORDS = stopwords.words("english")
