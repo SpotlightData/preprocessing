@@ -1,3 +1,7 @@
+.. image:: logo.jpg
+   :scale: 20 %
+   :align: center
+
 'preprocessing'
 ===============
 .. image:: https://readthedocs.org/projects/pre-processing/badge/?version=latest
