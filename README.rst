@@ -1,4 +1,4 @@
-.. image:: logo.jpg
+.. image:: logo.png
    :scale: 50 %
    :align: center
 
