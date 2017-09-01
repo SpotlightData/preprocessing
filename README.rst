@@ -1,6 +1,6 @@
 .. image:: logo.png
-   :scale: 50 %
    :align: center
+   :alt: Spotlight Data Logo
 
 'preprocessing'
 ===============
@@ -80,9 +80,9 @@ If you feel like contributing:
 * `Check for open issues <https://github.com/mwtmurphy/pre-processing/issues>`_ or open a new issue
 * Fork the preprocessing repository to start making your changes
 * Write a test which shows the bug was fixed or that the feature works as expected
-* Send a pull request and remember to add yourself to `CONTRIBUTORS.md <https://github.com/mwtmurphy/pre-processing/blob/master/CONTRIBUTORS.md>`_
+* Send a pull request and remember to add yourself to `CONTRIBUTORS.md <https://github.com/SpotlightData/preprocessing/blob/master/CONTRIBUTORS.md>`_
 
 License
 -------
 
-This project is licensed under the MIT license (see `LICENSE.txt <https://github.com/mwtmurphy/pre-processing/blob/master/LICENSE.txt>`_)
+This project is licensed under the MIT license (see `LICENSE <https://github.com/SpotlightData/preprocessing/blob/master/LICENSE>`_)
