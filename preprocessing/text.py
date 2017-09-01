@@ -1,34 +1,5 @@
 '''
-Text pre-processing module with functions:
-
-- convert_html_entities
-    - returns string with converted character references to unicode characters
-- convert_ligatures
-    - returns string with converted ligature character references to unicode characters
-- correct_spelling
-    - returns spelling corrected string 
-- create_sentence_list
-    - returns list of sentences
-- keyword_tokenize
-    - returns string with only non-stopword terms of a word length greater than 3
-- lowercase
-    - returns string in lowercase format
-- preprocess_text
-    - returns string with an order of preprocessing functions applied to it
-- remove_esc_chars
-    - returns string stripped of escape characters
-- remove_numbers
-    - returns string stripped of numbers represented as integer or float values
-- remove_number_words
-    - returns string stripped of numbers represented as words (one, two, three, etc.)
-- remove_time_words
-    - returns string stripped of words associated to time (day, week, month, etc.)
-- remove_unbound_punct
-    - returns string stripped of punctuation unattached to a non-whitespace character
-- remove_urls
-    - returns string stripped of URLs
-- remove_whitespace
-    - returns string stripped of whitespace
+Text pre-processing module:
 '''
 
 
@@ -350,7 +321,7 @@ def remove_whitespace(text_string):
 
     Exceptions raised:
 
-    -InputErrorL occurs should a string or NoneType not be passed as an argument
+    - InputError: occurs should a string or NoneType not be passed as an argument
     '''
     if text_string is None or text_string == "":
         return ""
