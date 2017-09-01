@@ -1,5 +1,5 @@
 .. image:: logo.jpg
-   :scale: 20 %
+   :scale: 50 %
    :align: center
 
 'preprocessing'
