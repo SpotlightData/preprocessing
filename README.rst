@@ -5,7 +5,7 @@
    :alt: Documentation Status
 
 .. image:: logo.jpg
-   :scale: 50 %
+   :scale: 20 %
    
 
 
