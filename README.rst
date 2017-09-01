@@ -5,9 +5,8 @@
    :alt: Documentation Status
 
 .. image:: logo.jpg
-   :width: 100px
-   :align: right
-   :height: 50px
+   :scale: 50%
+   
 
 
 Summary
