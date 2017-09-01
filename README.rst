@@ -8,11 +8,6 @@
    :target: http://pre-processing.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
-.. image:: logo.jpg
-   :scale: 20 %
-   
-
-
 Summary
 -------
 
