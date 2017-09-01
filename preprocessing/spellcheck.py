@@ -7,7 +7,7 @@ import re
 from os import path
 from collections import Counter
 
-from errors import InputError
+from preprocessing.errors import InputError
 
 
 EN_ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
@@ -39,8 +39,8 @@ def find_candidates(word_string):
     if word_string is None:
         return {}
     elif isinstance(word_string, str):
-        return (validate_words([word_string]) or validate_words(find_one_letter_edits(word_string))
-                or validate_words(find_two_letter_edits(word_string)) or [word_string])
+        return (validate_words([word_string]) or validate_words(list(find_one_letter_edits(word_string)))
+                or validate_words(list(find_two_letter_edits(word_string))) or [word_string])
     else:
         raise InputError("string or none type variable not passed as argument to find_candidates")
 

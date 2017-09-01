@@ -3,7 +3,7 @@ Text pre-processing module:
 '''
 
 
-from preprocessing.errors import Error, FunctionError, InputError
+from preprocessing.errors import FunctionError, InputError
 import preprocessing.spellcheck as spellcheck
 
 import html
@@ -54,7 +54,7 @@ def convert_ligatures(text_string):
     and returns converted string as type str.
 
     Keyword argument:
-    
+
     - text_string: string instance
 
     Exceptions raised:
@@ -88,15 +88,12 @@ def correct_spelling(text_string):
         return ""
     elif isinstance(text_string, str):
         word_list = text_string.split()
-        spellchecked_word_list = []*len(word_list)
-        for word_num, word in enumerate(word_list):
-            spellchecked_word_list[word_num] = spellcheck.correct_word(word)
+        spellchecked_word_list = []
+        for word in word_list:
+            spellchecked_word_list.append(spellcheck.correct_word(word))
         return " ".join(spellchecked_word_list)
     else:
         raise InputError("none type or string not passed as an argument")
-
-
-
 
 def create_sentence_list(text_string):
     '''

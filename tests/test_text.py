@@ -1,4 +1,4 @@
-'''unit tests for *text* module'''
+'''unit tests for text module'''
 
 from os import path
 import sys
@@ -27,6 +27,44 @@ class TestConvertHTMLEntitiesGoodInput(TestCase):
         self.assertEqual(ptext.convert_html_entities(None), "")
         self.assertEqual(ptext.convert_html_entities("&amp;"), "&")
         self.assertEqual(ptext.convert_html_entities('&quot;'), '"')
+
+
+class TestConvertLigaturesBadInput(TestCase):
+    '''tests for bad input to convert_ligatures'''
+
+    def test_non_string_input(self):
+        '''covert_ligatures should fail given non-string input'''
+        self.assertRaises(ptext.InputError, ptext.convert_ligatures, [])
+
+
+class TestConvertLigaturesGoodInput(TestCase):
+    '''tests for good input to convert_ligatures'''
+
+    def test_expected_outcome(self):
+        '''convert_ligatures should provide expected output given known input'''
+        self.assertEqual(ptext.convert_ligatures("Ꜳ"), "AA")
+        self.assertEqual(ptext.convert_ligatures("ꜳ"), "aa")
+        self.assertEqual(ptext.convert_ligatures("’"), "'")
+        self.assertEqual(ptext.convert_ligatures("Œ"), "OE")
+        self.assertEqual(ptext.convert_ligatures("ﬁ"), "fi")
+        self.assertEqual(ptext.convert_ligatures(None), "")
+
+
+class TestCorrectSpellingBadInput(TestCase):
+    '''tests for bad input to correct_spelling'''
+
+    def test_non_string_input(self):
+        '''correct_spelling should fail given non-string input'''
+        self.assertRaises(ptext.InputError, ptext.correct_spelling, [])
+
+
+class TestCorrectSpellingGoodInput(TestCase):
+    '''tests for good input to correct_spelling'''
+
+    def test_expected_outcome(self):
+        '''correct_spelling should provide expected outcome given known input'''
+        self.assertEqual(ptext.correct_spelling("ten terts"), "ten terms")
+        self.assertEqual(ptext.correct_spelling(None), "")
 
 
 class TestCreateSentenceListBadInput(TestCase):
