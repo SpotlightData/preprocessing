@@ -2,7 +2,7 @@
 
 ## Creator & Maintaner
 
-* Mitchell Murphy <mwtmurphy@gmail.com>
+* Mitchell Murphy <mitch@spotlightdata.co.uk>
 
 ## Contributors in chronological order:
 

@@ -4,6 +4,12 @@
    :target: http://pre-processing.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
+.. image:: logo.jpg
+    :width: 200px
+    :align: right
+    :height: 100px
+    
+
 Summary
 -------
 
