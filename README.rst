@@ -4,8 +4,8 @@
 
 'preprocessing'
 ===============
-.. image:: https://readthedocs.org/projects/pre-processing/badge/?version=latest
-   :target: http://pre-processing.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/preprocessing/badge/?version=latest
+   :target: http://preprocessing.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
 Summary
