@@ -1,4 +1,4 @@
-include logo.txt
+include logo.png
 include LICENSE
 include README.rst
 include requirements.txt

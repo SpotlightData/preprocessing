@@ -40,7 +40,7 @@ def find_candidates(word_string):
         return {}
     elif isinstance(word_string, str):
         return (validate_words([word_string]) or validate_words(list(find_one_letter_edits(word_string)))
-                or validate_words(list(find_two_letter_edits(word_string))) or [word_string])
+                or validate_words(list(find_two_letter_edits(word_string))) or set([word_string]))
     else:
         raise InputError("string or none type variable not passed as argument to find_candidates")
 
@@ -105,8 +105,10 @@ def validate_words(word_list):
     Checks for each edited word in word_list if that word is a valid english word.abs
     Returns all validated words as a set instance.
     '''
-    if isinstance(word_list, list):
-        if len(word_list) == 0:
+    if word_list is None:
+        return {}
+    elif isinstance(word_list, list):
+        if not word_list:
             return {}
         else:
             return set(word for word in word_list if word in WORD_DISTRIBUTION)
