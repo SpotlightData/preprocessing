@@ -15,10 +15,12 @@ import string
 import nltk.data
 nltk.data.path = [path.join(path.dirname(__file__), "data")]
 from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import RegexpTokenizer
 
 
 KEYWORD_TOKENIZER = RegexpTokenizer(r'\b[\w.\/,-]+\b|[-.,\/()]')
+LEMMATIZER = WordNetLemmatizer()
 LIGATURES = json.load(open(path.join(path.dirname(__file__), "data/latin_characters.json"), "r"))
 NUMBER_WORDS = [NUMBER_WORD.replace("\n", "") for NUMBER_WORD in open(path.join(path.dirname(__file__), "data/word_numbers.txt"), "r").readlines()]
 PUNCT = string.punctuation
@@ -134,6 +136,25 @@ def keyword_tokenize(text_string):
         return " ".join([word for word in KEYWORD_TOKENIZER.tokenize(text_string) if word not in STOPWORDS and len(word) >= 3])
     else:
         raise InputError("string not passed as argument for text_string")
+
+def lemmatize(text_string):
+    '''
+        Returns base from of text_string using NLTK's WordNetLemmatizer as type str.
+
+        Keyword argument:
+
+        - text_string: string instance
+
+        Exceptions raised:
+
+        - InputError: occurs should a non-string argument be passed
+    '''
+    if text_string is None or text_string == "":
+        return ""
+    elif isinstance(text_string, str):
+        return LEMMATIZER.lemmatize(text_string)
+    else:
+        raise InputError("string not passed as primary argument")
 
 def lowercase(text_string):
     '''

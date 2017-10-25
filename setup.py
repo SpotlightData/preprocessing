@@ -19,7 +19,7 @@ setup(name="preprocessing",
       long_description=open("README.rst").read(),
       keywords="text pre-processing",
 
-      url="https://github.com/mwtmurphy/pre-processing",
+      url="https://github.com/SpotlightData/preprocessing",
       author="Mitchell Murphy",
       author_email="mwtmurphy@gmail.com",
       license="MIT",
@@ -28,14 +28,12 @@ setup(name="preprocessing",
       packages=find_packages(),
       package_data={
           "preprocessing": [
-              "data/bnc_wiktionary_corpus.txt",
-              "data/latin_characters.json",
               "data/tokenizers/punkt/PY3/english.pickle",
               "data/tokenizers/punkt/english.pickle",
               "data/corpora/stopwords/english",
-              "data/word_numbers.txt",
-              "data/word_time.txt"
-          ]
+          ],
+          "preprocessing.data": ["*"],
+          "preprocessing.data.corpora.wordnet" : ["*"]
       },
       include_package_data=True,
 

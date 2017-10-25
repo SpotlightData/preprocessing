@@ -103,6 +103,26 @@ class TestKeywordTokenizeGoodInput(TestCase):
         self.assertEqual(ptext.keyword_tokenize("a test string"), "test string")
 
 
+class TestLemmatizeBadInput(TestCase):
+    '''tests for bad input to lemmatize'''
+
+    def test_invalid_input(self):
+        '''lemmatize should fail given invalid input'''
+        self.assertRaises(ptext.InputError, ptext.lemmatize, [])
+
+
+class TestLemmatizeGoodInput(TestCase):
+    '''tests for good input to lemmatize'''
+
+    def test_expected_outcome(self):
+        '''lemmatize should return expected outcome given known input'''
+        self.assertEqual(ptext.lemmatize("words"), "word")
+        self.assertEqual(ptext.lemmatize("1"), "1")
+        self.assertEqual(ptext.lemmatize("[]"), "[]")
+        self.assertEqual(ptext.lemmatize(None), "")
+        self.assertEqual(ptext.lemmatize(""), "")
+
+
 class TestLowercaseBadInput(TestCase):
     '''tests for bad input to lowercase'''
 
