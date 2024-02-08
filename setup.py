@@ -11,35 +11,31 @@ def get_requirements():
     return packages
 
 setup(name="preprocessing",
-      version="0.1.12",
-      classifiers=["Natural Language :: English",
-                   "Programming Language :: Python :: 3",
-                   "Programming Language :: Python :: 3.6"],
-      description="pre-processing package for text strings",
-      long_description=open("README.rst").read(),
-      keywords="text pre-processing",
+    version="0.1.12",
+    classifiers=["Natural Language :: English",
+                "Programming Language :: Python :: 3",
+                "Programming Language :: Python :: 3.6"],
+    description="pre-processing package for text strings",
+    long_description=open("README.rst").read(),
+    keywords="text pre-processing",
 
-      url="https://github.com/SpotlightData/preprocessing",
-      author="Mitchell Murphy",
-      author_email="mwtmurphy@gmail.com",
-      license="MIT",
+    url="https://github.com/SpotlightData/preprocessing",
+    author="Mitchell Murphy",
+    author_email="mwtmurphy@gmail.com",
+    license="MIT",
 
-      python_requires=">=3",
-      packages=find_packages(),
-      package_data={
-          "preprocessing": [
-              "data/tokenizers/punkt/PY3/english.pickle",
-              "data/tokenizers/punkt/english.pickle",
-              "data/corpora/stopwords/english",
-          ],
-          "preprocessing.data": ["*"],
-          "preprocessing.data.corpora.wordnet" : ["*"]
-      },
-      include_package_data=True,
+    python_requires=">=3",
+    packages=find_packages(),
+    package_data={
+        "preprocessing": [
+            "data/**"
+        ]
+    },
+    include_package_data=True,
 
-      install_requires=get_requirements(),
+    install_requires=get_requirements(),
 
-      test_suite="nose.collector",
-      tests_require=["nose"],
-      scripts=["bin/demo"],
-      zip_safe=False)
+    test_suite="nose.collector",
+    tests_require=["nose"],
+    scripts=["bin/demo"],
+    zip_safe=False)
